@@ -2,7 +2,7 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/estoque/public';
+    const BASE_DIR = '/Projetos/Gerenciador-Estoque-Vendas/public';
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';

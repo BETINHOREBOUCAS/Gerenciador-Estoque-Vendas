@@ -2,7 +2,16 @@
     float: right;
     width: 80%;
     height: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.barra_menu .dados {
+    float: right;
+    display: flex;
+}
+
+.barra_menu .name {
+    line-height: 50px;
 }
 
 .barra_menu .img {
@@ -21,7 +30,7 @@
     width: 20%;
     height: 100%;
     position: fixed;
-    font-size: 17pt;
+    font-size: 15pt;
     text-align: center;
     background-image: url("../imagens/fundo_dash.jpg");
     background-size: cover;
@@ -49,7 +58,7 @@
 
 .dash_sub_menu {
     display: flex;
-    padding: 20px 10px 20px 30px;
+    padding: 15px 10px 15px 30px;
     align-items: center;
 }
 

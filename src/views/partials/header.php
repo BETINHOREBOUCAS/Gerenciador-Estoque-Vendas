@@ -15,7 +15,11 @@
 
 <body>
     <div class="barra_menu">
-        <div class="img">Betinho Rebouças<i class="fas fa-user-circle"></i></div>
+        <div class="dados">
+            <div class="name">Betinho Rebouças</div>
+            <div class="img"><i class="fas fa-user-circle"></i></div>
+        </div>
+
     </div>
     <div class="dash">
         <div class="opacity"></div>

@@ -17,7 +17,7 @@
 
             <div class="text">
                 <div class="desc">Saldo à Receber</div>
-                <div class="resul">R$ 500.000,00</div>
+                <div class="resul">R$ 10.000,00</div>
             </div>
             <div class="icons" id="icon2">
                 <i class="fas fa-hand-holding-usd"></i>
