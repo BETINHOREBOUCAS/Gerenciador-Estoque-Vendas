@@ -53,7 +53,7 @@
 
 <div class="detalhes">
     <div class="ult_vendas">
-        <div class="desc">Ultimas Vendas</div>
+        <div class="desc">Últimas Vendas</div>
         <div class="table">
             <table class="table table-striped table-hover">
                 <thead>
@@ -108,7 +108,7 @@
         </div>
     </div>
     <div class="ult_pagamentos">
-        <div class="desc">Ultimos Pagamentos</div>
+        <div class="desc">Últimos Pagamentos</div>
         <div class="table">
             <table class="table table-striped table-hover">
                 <thead>
