@@ -1,4 +1,4 @@
-.tabela-produto {
+.produto {
     width: 80%;
     float: right;
     display: flex;
@@ -41,6 +41,7 @@
     color: #fff;
     background-color: #28a745;
     border-color: #28a745;
+    cursor: pointer;
 }
 
 .btn-success:hover {
@@ -91,10 +92,50 @@
     color: #fff;
     background-color: black;
     border-color: black;
+    cursor: pointer;
 }
 
 .btn-form:hover {
     color: #fff;
     background-color: gray;
     border-color: gray;
+}
+
+.tabela-produto {
+    width: 80%;
+    float: right;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.icons-table {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+#lupa {
+    background-color: #00C0EF;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 5px;
+    border-radius: 18%;
+}
+
+#editar {
+    background-color: #F39C0F;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 5px;
+    border-radius: 18%;
+}
+
+#excluir {
+    background-color: #DE4B39;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 18%;    
 }

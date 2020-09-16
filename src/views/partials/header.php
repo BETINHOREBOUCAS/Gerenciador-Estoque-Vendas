@@ -58,19 +58,19 @@
                     <div class="texto">Vendas</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/colaboradores">
+            <a href="<?= $base; ?>/colaborador">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-users"></i></div>
                     <div class="texto">Colaboradores</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/">
+            <a href="<?= $base; ?>/financeiro">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <div class="texto">Financeiro</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/">
+            <a href="<?= $base; ?>/sair">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-sign-out-alt"></i></div>
                     <div class="texto">Sair</div>

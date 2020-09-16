@@ -2,7 +2,7 @@
 
 <div class="produto">
     <div class="botao-produto">
-        <a href=""><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Adicionar produto</button></a>
+        <a href=""><button class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar cliente</button></a>
     </div>
     <div class="busca-produto">
         <form method="post">
@@ -19,8 +19,6 @@
                 <tr>
                     <th style="width: 10%;">Cod.</th>
                     <th style="width: 45%;">Nome</th>
-                    <th style="width: 25%;">Valor</th>
-                    <th style="width: 10%;">Estoque</th>
                     <th style="width: 10%;">Ações</th>
                 </tr>
             </thead>
@@ -28,8 +26,6 @@
                 <tr style="vertical-align:middle">
                     <td>1</td>
                     <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -45,11 +41,9 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr style="vertical-align:middle">
                     <td>1</td>
                     <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -65,11 +59,9 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr style="vertical-align:middle">
                     <td>1</td>
                     <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -85,11 +77,9 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr style="vertical-align:middle">
                     <td>1</td>
                     <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -105,11 +95,9 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr style="vertical-align:middle">
                     <td>1</td>
                     <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -125,6 +113,7 @@
 
                     </td>
                 </tr>
+                
             </tbody>
         </table>
     </div>
