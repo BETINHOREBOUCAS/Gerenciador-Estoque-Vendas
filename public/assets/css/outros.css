@@ -1,0 +1,68 @@
+.msg {
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.msgDanger {
+    background-color: lightcoral;
+}
+
+.msgSuccess {
+    background-color: lightgreen;
+}
+
+.form {
+    width: 80%;
+    float: right;
+}
+
+.title {
+    margin: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.caixa {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+.caixa div {
+    margin-right: 20px;
+    padding: 20px;
+    width: 100%;
+}
+.caixa div input {
+    width: 100%;
+}
+
+#qtd {
+    width: 40px;
+    margin-right: 10px;
+}
+
+#form-carrinho {
+    display: flex;    
+    align-items: center;
+    
+}
+
+.forma-pagamento {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+.pagamento {
+    background-color: greenyellow;
+    width: 50%;
+}

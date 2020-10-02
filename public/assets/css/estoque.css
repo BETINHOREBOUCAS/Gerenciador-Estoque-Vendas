@@ -37,6 +37,24 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.btn2 {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 1.5px 6px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .btn-success {
     color: #fff;
     background-color: #28a745;
@@ -116,6 +134,15 @@
 
 #lupa {
     background-color: #00C0EF;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 5px;
+    border-radius: 18%;
+}
+
+#venda {
+    background-color: green;
     width: 25px;
     height: 25px;
     line-height: 25px;

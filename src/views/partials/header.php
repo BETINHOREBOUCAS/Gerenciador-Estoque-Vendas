@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= $base; ?>/assets/css/all.css">
     <link rel="stylesheet" href="<?= $base; ?>/assets/css/estoque.css">
     <link rel="stylesheet" href="<?= $base; ?>/assets/css/home.css">
+    <link rel="stylesheet" href="<?= $base; ?>/assets/css/outros.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -16,7 +17,7 @@
 <body>
     <div class="barra_menu">
         <div class="dados">
-            <div class="name">Betinho Rebouças</div>
+            <div class="name"><a href="<?=$base;?>/sair">Betinho Rebouças</a></div>
             <div class="img"><i class="fas fa-user-circle"></i></div>
         </div>
 

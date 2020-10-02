@@ -3,9 +3,10 @@ namespace core;
 
 use \src\Config;
 
-class RouterBase {
+class RouterBase extends Model{
 
     public function run($routes) {
+
         $method = Request::getMethod();
         $url = Request::getUrl();
 
