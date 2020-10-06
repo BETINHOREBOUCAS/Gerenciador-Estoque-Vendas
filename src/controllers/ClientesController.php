@@ -30,10 +30,10 @@ class ClientesController extends Controller {
     }
 
     public function addClienteAction() {
-        $nome = filter_input(INPUT_POST, 'nome');
-        $endereco = filter_input(INPUT_POST, 'endereco');
-        $estado = filter_input(INPUT_POST, 'estado');
-        $cidade = filter_input(INPUT_POST, 'cidade');
+        $nome = ucwords(strtolower(filter_input(INPUT_POST, 'nome')));
+        $endereco = ucwords(strtolower(filter_input(INPUT_POST, 'endereco')));
+        $estado = ucwords(strtolower(filter_input(INPUT_POST, 'estado')));
+        $cidade = ucwords(strtolower(filter_input(INPUT_POST, 'cidade')));
         $tel1 = filter_input(INPUT_POST, 'tel1');
         $tel2 = filter_input(INPUT_POST, 'tel2');
 

@@ -77,6 +77,9 @@ foreach ($produtos as $valor) {
                         </div>
                         <br>
                         <div>
+                            <label for="datacompra">Data da compra:</label><br>
+                            <input type="date" name="datacompra" id="datacompra" class="form-control"> <br><br>
+                            <label for="desconto">Desconto:</label><br>
                             <input type="text" name="desconto" id="desconto" class="form-control" placeholder="Digite o valor do desconto se possuir.">
                         </div>
                         <br>

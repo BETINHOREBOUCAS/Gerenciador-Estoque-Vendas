@@ -6,6 +6,7 @@ use PDO;
 
 class ProdutosModel extends Model {
 
+    //Seção vendas
     public function getProdutos($busca) {
         if (!empty($busca)) {
             $sql = $this->pdo->prepare("SELECT * FROM produtos WHERE nome like :nome ORDER BY nome");
@@ -57,13 +58,32 @@ class ProdutosModel extends Model {
         $this->pdo->query("DELETE FROM carrinho WHERE id = $id");
     }
 
-    public function fecharCompra($ordem, $idCarrinho, $idProduto, $quantidade, $preco, $id_cliente) {
-       $this->pdo->query("INSERT INTO vendas (ordem, preco_un, quantidade, total, data_venda, id_produto, id_cliente) VALUES ()");
+    public function fecharCompra($ordem, $idCarrinho, $idProduto, $quantidade, $preco, $id_cliente, $dataCompra) {
+        $total = $quantidade * $preco;
+        $this->pdo->query("INSERT INTO vendas (ordem, preco_un, quantidade, total, data_venda, id_produto, id_cliente) VALUES ($ordem, $preco, $quantidade, $total, '$dataCompra', $idProduto, $id_cliente)");
+
+        $this->pdo->query("DELETE FROM carrinho WHERE id = $idCarrinho");
+
     }
 
     public function getMax() {
         $sql = $this->pdo->query("select max(ordem) from ordens");
         $sql = $sql->fetch();
         return $sql[0];
+    }
+
+    public function criarOrdem($ordem, $total, $tipo, $parcelas, $desconto, $id_cliente, $dataCompra) {
+        $this->pdo->query("INSERT INTO ordens (ordem, total, desconto, data_ordem, forma_pagamento, parcelas, id_cliente) VALUES ($ordem, $total, '$desconto', '$dataCompra', '$tipo', '$parcelas', $id_cliente)");
+        
+    }
+
+    public function updateEstoque($idProduto, $estoque) {
+        $this->pdo->query("UPDATE produtos SET quantidade = $estoque WHERE id = $idProduto");
+    }
+
+    //Seção Estoque
+    public function addProduto ($nome, $cor, $tamanho, $quantidade, $preco, $varanda, $punho, $acabamento, $comprimento, $largura, $peso) {
+        $sql = $this->pdo->query("INSERT INTO produtos (nome, cor, tamanho, quantidade, preco, varanda, punho, acabamento, comprimento, largura, peso) VALUES ('$nome', '$cor','$tamanho', $quantidade, '$preco', '$varanda', '$punho', '$acabamento', '$comprimento', '$largura', '$peso')");
+        return $sql->rowCount();
     }
 }

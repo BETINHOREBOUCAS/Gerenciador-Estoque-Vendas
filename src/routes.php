@@ -9,7 +9,11 @@ $router->get('/sair', 'HomeController@sair');
 $router->get('/login', 'LoginController@login');
 $router->post('/login', 'LoginController@loginAction');
 
+$router->get('/estoque/addProduto', 'EstoqueController@addProduto');
+$router->post('/estoque/addProduto', 'EstoqueController@addProdutoAction');
 $router->get('/estoque', 'EstoqueController@index');
+$router->post('/estoque', 'EstoqueController@listProduto');
+
 
 $router->get('/clientes/consulta/{id}', 'ClientesController@consultaCliente');
 $router->get('/clientes/editar/{id}', 'ClientesController@index');
@@ -28,9 +32,12 @@ $router->get('/addVenda/{id}', 'VendasController@addVenda');
 $router->get('/carrinho/{id}', 'VendasController@carrinho');
 $router->post('/carrinho/{id}', 'VendasController@carrinhoAction');
 $router->post('/addVenda/{id}', 'VendasController@addVendaAction');
-//$router->get('/fecharVenda', 'VendasController@fecharVenda');
-$router->get('/vendas', 'VendasController@index');
 
+
+$router->get('/ordens', 'OrdensController@index');
+$router->post('/ordens', 'OrdensController@consultaOrdemAction');
+
+$router->get('/colaborador/addColaborador', 'ColaboradorController@addColaborador');
 $router->get('/colaborador', 'ColaboradorController@index');
 
 $router->get('/financeiro', 'FinanceiroController@index');

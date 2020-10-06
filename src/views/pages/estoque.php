@@ -2,7 +2,8 @@
 
 <div class="produto">
     <div class="botao-produto">
-        <a href=""><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Adicionar produto</button></a>
+        <a href="<?= $base; ?>/estoque/addProduto"><button class="btn btn-success"><i class="fas fa-plus-circle"></i>
+                Adicionar produto</button></a>
     </div>
     <div class="busca-produto">
         <form method="post">
@@ -14,119 +15,50 @@
 
 <div class="tabela-produto">
     <div class="table">
-        <table class="table table-striped table-hover borda">
-            <thead>
-                <tr>
-                    <th style="width: 10%;">Cod.</th>
-                    <th style="width: 45%;">Nome</th>
-                    <th style="width: 25%;">Valor</th>
-                    <th style="width: 10%;">Estoque</th>
-                    <th style="width: 10%;">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
+        <?php if (!empty($produtos)) : ?>
+            <table class="table table-striped table-hover borda">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Cod.</th>
+                        <th style="width: 30%;">Produto</th>
+                        <th style="width: 10%;">Cor</th>
+                        <th style="width: 10%;">Tamanho</th>
+                        <th style="width: 10%;">Estoque</th>
+                        <th style="width: 10%;">Preço</th>
+                        <th style="width: 10%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
+                    <?php foreach ($produtos as $value) : ?>
+                        <tr style="vertical-align:middle">
+                            <td><?= $value['id']; ?></td>
+                            <td><?= $value['nome']; ?></td>
+                            <td><?= $value['cor']; ?></td>
+                            <td><?= $value['tamanho']; ?></td>
+                            <td><?= $value['quantidade']; ?></td>
+                            <td>R$ <?= number_format($value['preco'], 2, ",", "."); ?></td>
+                            <td>
+                                <div class="icons-table">
+                                    <a href="">
+                                        <div id="lupa"><i class="fas fa-search"></div></i>
+                                    </a>
+                                    <a href="">
+                                        <div id="editar"><i class="fas fa-edit"></div></i>
+                                    </a>
+                                    <a href="">
+                                        <div id="excluir"><i class="fas fa-times-circle"></div></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>R$ 60,00</td>
-                    <td>5</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        <?php endif ?>
     </div>
 
 </div>

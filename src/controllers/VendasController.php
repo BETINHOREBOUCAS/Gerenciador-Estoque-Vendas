@@ -7,9 +7,9 @@ use src\models\ProdutosModel;
 
 class VendasController extends Controller {
 
-    public function index() {
+    /*public function index() {
         $this->render('vendas');
-    }
+    }*/
 
     public function addVenda($attr) {
         $busca = filter_input(INPUT_POST, 'busca'); 
@@ -137,6 +137,7 @@ class VendasController extends Controller {
         //Criação de ordem incompleto
         $totalCompra = 0;
 
+        $dataCompra = filter_input(INPUT_POST, 'datacompra');
         $desconto = filter_input(INPUT_POST, 'desconto');
         $tipoPagamento = filter_input(INPUT_POST, 'pagamento');
         $parcelas = filter_input(INPUT_POST, 'parcelas');
@@ -144,9 +145,14 @@ class VendasController extends Controller {
 
         if ($tipoPagamento != 'avista') {
             if (empty($parcelas)) {
-                $_SESSION['flash'] = "O campo quantidade de parcelas não pode ser vazio!";
+                $_SESSION['flash'] = "O campo quantidade de parcelas e/ou data não pode ser vazio!";
                 $this->redirect("/carrinho/$id_cliente");
             }
+        }
+
+        if (empty($dataCompra)) {
+            $_SESSION['flash'] = "O campo quantidade de parcelas e/ou data não pode ser vazio!";
+            $this->redirect("/carrinho/$id_cliente");
         }
 
         $comparar = new ProdutosModel();
@@ -214,12 +220,22 @@ class VendasController extends Controller {
             $idProduto = $venda['id_produto'];
             $quantidade = $venda['quantidade'];
             $preco = $venda['preco'];
-            $verificar->fecharCompra($ordem, $idCarrinho, $idProduto, $quantidade, $preco, $id_cliente);
+
+            $calculo = $preco * $quantidade;
+            $totalCompra += $calculo;
+
+            $verificar->fecharCompra($ordem, $idCarrinho, $idProduto, $quantidade, $preco, $id_cliente, $dataCompra);
+
+            $estoque = $verificar->getProduto($idProduto);
+            $estoque = $estoque['quantidade'] - $quantidade;
+
+            $verificar->updateEstoque($idProduto, $estoque);
         }
 
-        echo "<pre>";
-        print_r($array2);
-        echo "<pre>";
+        $verificar->criarOrdem($ordem, $totalCompra, $tipoPagamento, $parcelas, $desconto, $id_cliente, $dataCompra);
+
+        $_SESSION['flash'] = "Venda realizada com sucesso!";
+        $this->redirect("/addVenda/$id_cliente");
     }
 
     public function excluirCarrinho($attr) {

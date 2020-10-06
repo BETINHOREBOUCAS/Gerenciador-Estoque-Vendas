@@ -2,7 +2,7 @@
 
 <div class="produto">
     <div class="botao-produto">
-        <a href=""><button class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar colaborador</button></a>
+        <a href="<?=$base;?>/colaborador/addcolaborador"><button class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar colaborador</button></a>
     </div>
     <div class="busca-produto">
         <form method="post">

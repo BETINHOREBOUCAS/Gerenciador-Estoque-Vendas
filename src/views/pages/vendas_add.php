@@ -48,7 +48,7 @@
                                 <div class="icons-table">
                                     <form action="<?= $base; ?>/addCarrinho/<?= $cliente['id']; ?>/<?= $value['id']; ?>" method="post" id="form-carrinho">
 
-                                        <div><input type="number" name="qtd" id="qtd" max="<?=$value['quantidade'];?>"></div>
+                                        <div><input type="number" name="qtd" id="qtd" min="0" max="<?=$value['quantidade'];?>"></div>
                                         
                                         <a href=""><button class="btn2 btn-success"><i class="fas fa-shopping-cart"></i></button></a>
 

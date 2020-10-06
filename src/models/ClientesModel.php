@@ -57,12 +57,12 @@ class ClientesModel extends Model {
     public function insertClient($nome, $endereco = [], $estado = [], $cidade = [], $tel1 = [], $tel2 = []) {
 
         $sql = $this->pdo->prepare("INSERT INTO clientes (nome, endereco, estado, cidade, telefone1, telefone2) VALUES (:nome, :endereco, :estado, :cidade, :tel1, :tel2)");
-        $sql->bindValue(':nome', strtoupper($nome));
-        $sql->bindValue(':endereco', strtoupper($endereco));
-        $sql->bindValue(':estado', strtoupper($estado));
-        $sql->bindValue(':cidade', strtoupper($cidade));
-        $sql->bindValue(':tel1', strtoupper($tel1));
-        $sql->bindValue('tel2', strtoupper($tel2));
+        $sql->bindValue(':nome', $nome);
+        $sql->bindValue(':endereco', $endereco);
+        $sql->bindValue(':estado', $estado);
+        $sql->bindValue(':cidade', $cidade);
+        $sql->bindValue(':tel1', $tel1);
+        $sql->bindValue('tel2', $tel2);
         $sql->execute();
 
     }    

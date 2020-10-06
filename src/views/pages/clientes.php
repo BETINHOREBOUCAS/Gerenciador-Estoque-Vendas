@@ -24,7 +24,7 @@
                 <table class="table table-striped table-hover borda">
                     <thead>
                         <tr>
-                            <th style="width: 10%;">Cod.</th>
+                            <th style="width: 10%;">ID</th>
                             <th style="width: 45%;">Nome</th>
                             <th style="width: 10%;">Tel1</th>
                             <th style="width: 10%;">Tel2</th>
@@ -35,7 +35,7 @@
                     <tbody>
                         <tr style="vertical-align:middle">
                             <td><?=$value['id'];?></td>
-                            <td><?=$value['nome'];?></td>
+                            <td style="text-align: left; padding-left: 30px;"><?=$value['nome'];?></td>
                             <td><?=$value['telefone1'];?></td>
                             <td><?=$value['telefone2'];?></td>
                             <td>

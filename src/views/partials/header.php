@@ -53,10 +53,10 @@
                     <div class="texto">Produção</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/vendas">
+            <a href="<?= $base; ?>/ordens">
                 <div class="dash_sub_menu">
-                    <div class="icon"><i class="fas fa-shopping-cart"></i></div>
-                    <div class="texto">Vendas</div>
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="texto">Ordens</div>
                 </div>
             </a>
             <a href="<?= $base; ?>/colaborador">
