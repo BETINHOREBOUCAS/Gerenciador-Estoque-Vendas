@@ -6,7 +6,7 @@ foreach ($produtos as $valor) {
 }
 
 ?>
-<?php $render('header'); ?>
+<?php $render('header', ['usuario' => $usuario]); ?>
 
 <div class="form">
     <div class="title">Carrinho: <?= $cliente['nome']; ?></div>

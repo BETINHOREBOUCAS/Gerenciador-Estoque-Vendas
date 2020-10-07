@@ -1,4 +1,4 @@
-<?php $render('header'); ?>
+<?php $render('header', ['usuario' => $usuario]); ?>
 
 <div class="produto">
     <div class="botao-produto">
@@ -14,18 +14,26 @@
 
 <div class="tabela-produto">
     <div class="table">
+    <?php if (!empty($colaboradores)) :?>
         <table class="table table-striped table-hover borda">
             <thead>
                 <tr>
-                    <th style="width: 10%;">Cod.</th>
+                    <th style="width: 10%;">ID</th>
                     <th style="width: 45%;">Nome</th>
+                    <th style="width: 20%;">Endereço</th>
+                    <th style="width: 10%;">Função</th>
+                    <th style="width: 10%;">status</th>
                     <th style="width: 10%;">Ações</th>
                 </tr>
             </thead>
             <tbody>
+                <?php foreach ($colaboradores as $value):?>
                 <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
+                    <td><?=$value['id'];?></td>
+                    <td><?=$value['nome'];?></td>
+                    <td><?=$value['endereco'];?></td>
+                    <td><?=$value['funcao'];?></td>
+                    <td><?=$value['status'];?></td>
                     <td>
                         <div class="icons-table">
                             <a href="">
@@ -40,82 +48,11 @@
                         </div>
 
                     </td>
-                </tr>
-                <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr style="vertical-align:middle">
-                    <td>1</td>
-                    <td>Tijubana</td>
-                    <td>
-                        <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="excluir"><i class="fas fa-times-circle"></div></i>
-                            </a>
-                        </div>
-
-                    </td>
-                </tr>
-                
+                </tr> 
+                <?php endforeach ?>              
             </tbody>
         </table>
+        <?php endif ?>
     </div>
 
 </div>

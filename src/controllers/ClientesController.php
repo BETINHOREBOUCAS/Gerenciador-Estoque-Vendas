@@ -6,6 +6,17 @@ use src\models\ClientesModel;
 
 class ClientesController extends Controller {
 
+    public $loggedUser;
+
+    public function __construct() {
+        $data = new ClientesModel();
+        $this->loggedUser = $data->checkinLogin();
+
+        if (empty($this->loggedUser)) {
+            $this->redirect('/login');
+        } 
+    }
+
     public function index($attr) {
         $flash = '';
         if (!empty($_SESSION['flash'])) {
@@ -13,7 +24,8 @@ class ClientesController extends Controller {
             $_SESSION['flash'] = '';
         }
         $this->render('clientes', [
-            'flash' => $flash
+            'flash' => $flash,
+            'usuario' => $this->loggedUser['nome']
         ]);
 
     }
@@ -25,7 +37,8 @@ class ClientesController extends Controller {
             $_SESSION['flash'] = '';
         }
         $this->render('cliente_add', [
-            'flash' => $flash
+            'flash' => $flash,
+            'usuario' => $this->loggedUser['nome']
         ]);
     }
 
@@ -54,12 +67,12 @@ class ClientesController extends Controller {
         $pesquisa = new ClientesModel();
         $pesquisa = $pesquisa->getClients($busca);
                 
-        $this->render('clientes', ['data' => $pesquisa]);
+        $this->render('clientes', ['data' => $pesquisa, 'usuario' => $this->loggedUser['nome']]);
     }
 
     public function consultaCliente($attr) {
         
-        $this->render('cliente_consulta', ['data' => $attr]);
+        $this->render('cliente_consulta', ['data' => $attr, 'usuario' => $this->loggedUser['nome']]);
     }
 
 }

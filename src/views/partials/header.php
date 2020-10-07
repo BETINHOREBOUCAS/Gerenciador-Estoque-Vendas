@@ -17,8 +17,9 @@
 <body>
     <div class="barra_menu">
         <div class="dados">
-            <div class="name"><a href="<?=$base;?>/sair">Betinho Rebouças</a></div>
+            <div class="name"><?=$usuario;?></div>
             <div class="img"><i class="fas fa-user-circle"></i></div>
+            <div class="img" title="Sair"><a href="<?=$base;?>/sair" style="color: black;"><i class="fas fa-sign-out-alt"></i></a></div>
         </div>
 
     </div>
@@ -47,12 +48,12 @@
                     <div class="texto">Estoque</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/producao">
+            <!--<a href="<?= $base; ?>/producao">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-pencil-ruler"></i></i></div>
                     <div class="texto">Produção</div>
                 </div>
-            </a>
+            </a>-->
             <a href="<?= $base; ?>/ordens">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-clipboard-list"></i></div>
@@ -65,12 +66,12 @@
                     <div class="texto">Colaboradores</div>
                 </div>
             </a>
-            <a href="<?= $base; ?>/financeiro">
+            <!--<a href="<?= $base; ?>/financeiro">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <div class="texto">Financeiro</div>
                 </div>
-            </a>
+            </a>-->
             <a href="<?= $base; ?>/sair">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-sign-out-alt"></i></div>

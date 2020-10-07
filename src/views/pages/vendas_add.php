@@ -1,4 +1,4 @@
-<?php $render('header'); ?>
+<?php $render('header', ['usuario' => $usuario]); ?>
 
 <div class="form">
     <div class="title"><?= $cliente['nome']; ?></div>

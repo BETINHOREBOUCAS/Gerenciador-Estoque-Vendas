@@ -1,11 +1,10 @@
-<?php print_r($atividades);?>
-<?php $render('header'); ?>
+<?php $render('header', ['usuario' => $usuario]); ?>
 
 <div class="form">
 <div class="title">Dados Pessoais</div>
 <hr>
 <?php if (!empty($flash)) : ?>
-<div class="msg msgDanger"><?=$flash;?></div>
+<div class="msg msgSuccess"><?=$flash;?></div>
 <?php endif ?>
     <form method="post">
 
@@ -23,11 +22,18 @@
         <div class="caixa">
             <div>
                 <label for="funcao">Função:</label> <br>
-                <input type="text" name="funcao" id="funcao" class="form-control"> 
+                
+                <select name="funcao" id="funca" class="form-control" style="width: 100%">
+                    <option value=""></option>
+                   <?php foreach ($atividades as $value) : ?> 
+                    <option value="<?=$value['atividade'];?>"><?=$value['atividade'];?></option>
+                    <?php endforeach ?>
+                </select>
+                
             </div>
             <div>
-                <label for="cidade">Cidade:</label><br>
-                <input type="text" name="cidade" id="cidade" class="form-control"> 
+                <label for="preco">Preço Combinado:</label><br>
+                <input type="text" name="preco" id="preco" class="form-control"> 
             </div>
         </div>
 

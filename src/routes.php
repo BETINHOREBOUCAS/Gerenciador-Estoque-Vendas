@@ -38,6 +38,8 @@ $router->get('/ordens', 'OrdensController@index');
 $router->post('/ordens', 'OrdensController@consultaOrdemAction');
 
 $router->get('/colaborador/addColaborador', 'ColaboradorController@addColaborador');
+$router->post('/colaborador/addColaborador', 'ColaboradorController@addColaboradorAction');
+$router->post('/colaborador', 'ColaboradorController@indexAction');
 $router->get('/colaborador', 'ColaboradorController@index');
 
 $router->get('/financeiro', 'FinanceiroController@index');

@@ -2,12 +2,24 @@
 namespace src\controllers;
 
 use \core\Controller;
+use src\models\ClientesModel;
 use src\models\ProdutosModel;
 
 class EstoqueController extends Controller {
 
+    public $loggedUser;
+
+    public function __construct() {
+        $data = new ClientesModel();
+        $this->loggedUser = $data->checkinLogin();
+
+        if (empty($this->loggedUser)) {
+            $this->redirect('/login');
+        } 
+    }
+
     public function index() {
-        $this->render('estoque');
+        $this->render('estoque', ['usuario' => $this->loggedUser['nome']]);
     }
 
     public function addProduto() {
@@ -17,7 +29,7 @@ class EstoqueController extends Controller {
             $_SESSION['flash'] = '';
         }
 
-        $this->render('estoque_add', ['flash' => $flash]);
+        $this->render('estoque_add', ['flash' => $flash, 'usuario' => $this->loggedUser['nome']]);
     }
 
     public function addProdutoAction() {
@@ -53,7 +65,7 @@ class EstoqueController extends Controller {
         $infoProduto = new ProdutosModel();
         $produtos = $infoProduto->getProdutos($busca);
 
-        $this->render('estoque', ['produtos' => $produtos]);
+        $this->render('estoque', ['produtos' => $produtos, 'usuario' => $this->loggedUser['nome']]);
     }
 
 }

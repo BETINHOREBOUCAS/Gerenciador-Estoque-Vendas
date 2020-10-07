@@ -7,9 +7,16 @@ use src\models\ProdutosModel;
 
 class VendasController extends Controller {
 
-    /*public function index() {
-        $this->render('vendas');
-    }*/
+    public $loggedUser;
+
+    public function __construct() {
+        $data = new ClientesModel();
+        $this->loggedUser = $data->checkinLogin();
+
+        if (empty($this->loggedUser)) {
+            $this->redirect('/login');
+        } 
+    }
 
     public function addVenda($attr) {
         $busca = filter_input(INPUT_POST, 'busca'); 
@@ -35,7 +42,8 @@ class VendasController extends Controller {
             'carrinho' => $carrinho,
             'cliente' => $cliente,
             'produtos' => $produtos,
-            'flash' => $flash
+            'flash' => $flash,
+            'usuario' => $this->loggedUser['nome']
             ]);
     }
 
@@ -63,7 +71,8 @@ class VendasController extends Controller {
             'carrinho' => $carrinho,
             'cliente' => $cliente,
             'produtos' => $produtos,
-            'flash' => $flash
+            'flash' => $flash,
+            'usuario' => $this->loggedUser['nome']
             ]);
     }
 
@@ -129,12 +138,13 @@ class VendasController extends Controller {
         $this->render('vendas_carrinho', [  
             'flash' => $flash,           
             'cliente' => $cliente,
-            'produtos' => $array2,            
+            'produtos' => $array2,
+            'usuario' => $this->loggedUser['nome']            
         ]);
     }
 
     public function carrinhoAction($attr) {
-        //Criação de ordem incompleto
+        
         $totalCompra = 0;
 
         $dataCompra = filter_input(INPUT_POST, 'datacompra');

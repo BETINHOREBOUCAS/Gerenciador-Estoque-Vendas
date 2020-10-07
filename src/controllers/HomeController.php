@@ -18,7 +18,8 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $this->render('home');
+        $info = $this->loggedUser['nome'];
+        $this->render('home', ['usuario' => $info]);
     }
 
     public function sair() {
