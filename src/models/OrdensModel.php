@@ -60,4 +60,16 @@ class OrdensModel extends Model {
             return $dados;
         }
     }
+
+    public function orderClient($idCliente, $ordenar) {
+        $sql = $this->pdo->query("SELECT * FROM ordens WHERE id_cliente = $idCliente ORDER BY data_ordem $ordenar");
+        $sql = $sql->fetchAll();
+        return $sql;
+    }
+
+    public function getProdutoOrdem($ordem) {
+        $sql = $this->pdo->query("SELECT * FROM vendas WHERE ordem = $ordem");
+        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $sql;       
+    }
 }

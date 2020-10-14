@@ -1,27 +1,30 @@
+<?php
+if (isset($_GET['ordenar'])) {
+    $ordenar = $_GET['ordenar'];
+} else {
+    $ordenar = '';
+}
+?>
 <?php $render('header', ['usuario' => $usuario]); ?>
 
 <div class="form">
-    <div class="title">Ordens: Jorge</div>
+    <div class="title">Ordens: <?= $cliente['nome']; ?></div>
     <hr>
 </div>
 
 <div class="produto">
-    <div class="botao-produto">
-        <a href="<?= $base; ?>/addVenda/<?=$data['id'];?>"><button class="btn btn-success"><i class="fas fa-shopping-cart"></i> Vender</button></a>
-    </div>
-    <div class="busca-produto">
-        <form method="get">
-            <select name="ordenar" id="organizar" class="form-control">
-                <option value="">Ordenar por:</option>
-                <option value="">Data Crescente</option>
-                <option value="">Data Decrescente</option>
-                <option value="">Nome Produto Crescente</option>
-                <option value="">Nome Produto Decrescente</option>
-            </select>
+    <?php if (!empty($ordens)) : ?>
+        <div class="busca-produto">
+            <form method="get">
+                <select name="ordenar" id="organizar" class="form-control">
+                    <option value="">Ordenar por:</option>
+                    <option value="asc" <?= $ordenar == 'asc' ? 'selected' : ''; ?>>Data Crescente</option>
+                    <option value="desc" <?= $ordenar == 'desc' ? 'selected' : ''; ?>>Data Decrescente</option>
+                </select>
 
-            <div><button class="btn-form">Aplicar</i></button></div>
-        </form>
-    </div>
+                <div><button class="btn-form">Aplicar</i></button></div>
+            </form>
+        </div>
 </div>
 
 <div class="tabela-produto">
@@ -31,34 +34,53 @@
             <thead>
                 <tr>
                     <th style="width: 10%;">Nº Ordem</th>
-                    <th style="width: 15%;">Total</th>
-                    <th style="width: 10%;">Data</th>
+                    <th style="width: 8%;">Data</th>
+                    <th style="width: 8%;">Valor</th>
+                    <th style="width: 8%;">Desconto</th>
+                    <th style="width: 8%;">Total</th>
+                    <th style="width: 13%;">Forma Pagamento</th>
                     <th style="width: 10%;">Situação</th>
                     <th style="width: 5%;">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1052</td>
-                    <td>R$ 5.000,00</td>
-                    <td>10/05/2020</td>
-                    <td>Parcelado</td>
-                    <td>
-                    <div class="icons-table">
-                        <a href="<?= $base; ?>/clientes/consulta/<?= $value['id']; ?>">
-                            <div id="lupa" title="Consulta"><i class="fas fa-search"></div></i>
-                        </a>
-                        <a href="<?= $base; ?>/clientes/excluir/<?= $value['id']; ?>">
-                            <div id="excluir" title="Excluir"><i class="fas fa-times-circle"></div></i>
-                        </a>
-                    </div>
-                    </td>
-                </tr>
+                <?php foreach ($ordens as $value) : ?>
+                    <?php
+                    $date = new DateTime($value['data_ordem']);
+                    $data = $date->format("d/m/Y");
+                    ?>
+                    <tr>
+                        <td><?= $value['ordem']; ?></td>
+                        <td><?= $data; ?></td>
+                        <td>R$ <?= number_format($value['total'], 2, ",", "."); ?></td>
+                        <td>R$ <?= number_format($value['desconto'], 2, ",", "."); ?></td>
+                        <td>R$ <?= number_format($value['total'] - $value['desconto'], 2, ",", "."); ?></td>
+                        <td><?= $value['forma_pagamento']; ?></td>
+                        <td><?= $value['status']; ?></td>
+                        <td>
+                            <div class="icons-table">
+                                <a href="<?= $base; ?>/ordens/consulta/<?= $value['ordem']; ?>" class="modal_ajax" info="Detalhes #<?= $value['ordem']; ?>">
+                                    <div id="lupa" title="Consulta"><i class="fas fa-search"></div></i>
+                                </a>
+                                <!--<a href="<?= $base; ?>/ordens/editar/<?= $value['ordem']; ?>" class="modal_ajax" info="Editar #<?= $value['ordem']; ?>">
+                                    <div id="editar" title="Editar"><i class="fas fa-undo-alt"></div></i>
+                                </a>-->
+                                <a href="<?= $base; ?>/ordens/cancelar/<?= $value['ordem']; ?>" class="modal_ajax" info="Cancelar #<?= $value['ordem']; ?>">
+                                    <div id="excluir" title="Cancelar"><i class="fas fa-times-circle" info="Cancelar <?= $value['ordem']; ?>"></div></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+
             </tbody>
 
         </table>
     </div>
 </div>
-
-
+<?php else : ?>
+    <div class="busca-produto">
+        Não existe ordens para este usuario
+    </div>
+<?php endif ?>
 <?php $render('footer'); ?>

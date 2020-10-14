@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\models\ClientesModel;
+use src\models\OrdensModel;
 
 class ClientesController extends Controller {
 
@@ -70,9 +71,21 @@ class ClientesController extends Controller {
         $this->render('clientes', ['data' => $pesquisa, 'usuario' => $this->loggedUser['nome']]);
     }
 
-    public function consultaCliente($attr) {
+    public function infoCliente($attr) {
+        $ordenar = '';
+        $idCliente = $attr['id'];
+        $order = new OrdensModel();
+        $clientes = new ClientesModel();
+        if (isset($_GET['ordenar'])) {
+           $ordenar = $_GET['ordenar']; 
+        }
         
-        $this->render('cliente_consulta', ['data' => $attr, 'usuario' => $this->loggedUser['nome']]);
+        if (empty($ordenar) && isset($_GET['ordenar'])) {
+            $ordenar = 'desc';
+        }
+        $ordens = $order->orderClient($idCliente, $ordenar);
+        $cliente = $clientes->getClient($idCliente);
+        $this->render('cliente_consulta', ['ordens' => $ordens, 'usuario' => $this->loggedUser['nome'], 'cliente' => $cliente]);
     }
 
 }

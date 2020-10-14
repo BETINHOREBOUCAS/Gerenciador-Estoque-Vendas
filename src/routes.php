@@ -15,7 +15,7 @@ $router->get('/estoque', 'EstoqueController@index');
 $router->post('/estoque', 'EstoqueController@listProduto');
 
 
-$router->get('/clientes/consulta/{id}', 'ClientesController@consultaCliente');
+$router->get('/clientes/consulta/{id}', 'ClientesController@infoCliente');
 $router->get('/clientes/editar/{id}', 'ClientesController@index');
 $router->get('/clientes/excluir/{id}', 'ClientesController@index');
 $router->get('/clientes', 'ClientesController@index');
@@ -34,6 +34,10 @@ $router->post('/carrinho/{id}', 'VendasController@carrinhoAction');
 $router->post('/addVenda/{id}', 'VendasController@addVendaAction');
 
 
+$router->get('/ordens/consulta/{id}', 'OrdensController@consultaDetalhada');
+$router->get('/ordens/editar/{id}', 'OrdensController@editarOrdem');
+$router->get('/ordens/cancelar/{id}', 'OrdensController@cancelarOrdem');
+$router->post('/ordens/cancelar/{id}', 'OrdensController@cancelarOrdemAction');
 $router->get('/ordens', 'OrdensController@index');
 $router->post('/ordens', 'OrdensController@consultaOrdemAction');
 
