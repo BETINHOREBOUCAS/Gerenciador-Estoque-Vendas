@@ -24,7 +24,7 @@
                     <th style="width: 10%;">Denconto</th>
                     <th style="width: 10%;">Valor Total</th>                    
                     <th style="width: 16%;">Data Compra</th>
-                    <th style="width: 10%;">Ações</th>
+                    <!--<th style="width: 10%;">Ações</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -42,20 +42,14 @@
                     <td>R$ <?=number_format($value['dados']['total'] - $value['dados']['desconto'], 2, ",", ".");?></td>
                     
                     <td><?=$dataFormat;?></td>
-                    <td>
+                    <!--<td>
                         <div class="icons-table">
-                            <a href="">
-                                <div id="lupa"><i class="fas fa-search"></div></i>
-                            </a>
-                            <a href="">
-                                <div id="editar"><i class="fas fa-edit"></div></i>
-                            </a>
-                            <a href="">
+                        <a href="<?=$base;?>/ordens/cancelar/<?=$value['dados']['ordem'];?>" class="modal_ajax">
                                 <div id="excluir"><i class="fas fa-times-circle"></div></i>
                             </a>
                         </div>
-
-                    </td>
+                        
+                    </td>-->
                 </tr>
                 <?php endforeach ?>
             </tbody>

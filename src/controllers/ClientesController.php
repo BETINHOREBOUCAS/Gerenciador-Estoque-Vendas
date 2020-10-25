@@ -63,12 +63,57 @@ class ClientesController extends Controller {
 
     }
 
+    public function editarCliente($attr) {
+        $cliente = new ClientesModel();
+        $resp = $cliente->getClient($attr['id']);
+        $this->render('cliente_editar', ['cliente' => $resp, 'usuario' => $this->loggedUser['nome']]);
+    }
+
+    public function editarClienteAction($attr) {
+        $id = $attr['id'];
+        $nome = ucwords(strtolower(filter_input(INPUT_POST, 'nome')));
+        $endereco = ucwords(strtolower(filter_input(INPUT_POST, 'endereco')));
+        $estado = ucwords(strtolower(filter_input(INPUT_POST, 'estado')));
+        $cidade = ucwords(strtolower(filter_input(INPUT_POST, 'cidade')));
+        $tel1 = filter_input(INPUT_POST, 'tel1');
+        $tel2 = filter_input(INPUT_POST, 'tel2');
+
+        if (!empty($nome)) {
+            
+            $add = new ClientesModel();
+            $add->updateClient($id, $nome, $endereco, $estado, $cidade, $tel1, $tel2); 
+            $_SESSION['flash'] = "Sucesso! Cliente $nome foi atualizado com sucesso!";
+            $this->redirect("/clientes?busca=$nome");
+        } else {
+            $_SESSION['flash'] ='Erro! O campo nome é obrigatorio!';
+            $this->redirect("/clientes?busca=$nome");
+        }
+    }
+
+    public function excluirCliente ($attr) {
+        $this->render('cliente_excluir_modal', ['ordem' => $attr['id']]);
+    }
+
+    public function excluirClienteAction ($attr) {
+        $cadastro = new ClientesModel();
+        $cadastro->deleteClient($attr['id']);
+    }
+
     public function buscarCliente() {
-        $busca = filter_input(INPUT_POST, 'busca');
-        $pesquisa = new ClientesModel();
-        $pesquisa = $pesquisa->getClients($busca);
+        $flash = '';
+        if (!empty($_SESSION['flash'])) {
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+        $pesquisa = '';
+        $busca = filter_input(INPUT_GET, 'busca');
+        if (isset($busca)) {
+            $pesquisa = new ClientesModel();
+            $pesquisa = $pesquisa->getClients($busca);
+        }
+        
                 
-        $this->render('clientes', ['data' => $pesquisa, 'usuario' => $this->loggedUser['nome']]);
+        $this->render('clientes', ['data' => $pesquisa, 'usuario' => $this->loggedUser['nome'], 'flash' => $flash]);
     }
 
     public function infoCliente($attr) {

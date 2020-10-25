@@ -20,7 +20,6 @@
         <div class="dados">
             <div class="name"><?=$usuario;?></div>
             <div class="img"><i class="fas fa-user-circle"></i></div>
-            <div class="img" title="Sair"><a href="<?=$base;?>/sair" style="color: black;"><i class="fas fa-sign-out-alt"></i></a></div>
         </div>
 
     </div>
@@ -49,12 +48,6 @@
                     <div class="texto">Estoque</div>
                 </div>
             </a>
-            <!--<a href="<?= $base; ?>/producao">
-                <div class="dash_sub_menu">
-                    <div class="icon"><i class="fas fa-pencil-ruler"></i></i></div>
-                    <div class="texto">Produção</div>
-                </div>
-            </a>-->
             <a href="<?= $base; ?>/ordens">
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-clipboard-list"></i></div>
@@ -65,6 +58,12 @@
                 <div class="dash_sub_menu">
                     <div class="icon"><i class="fas fa-users"></i></div>
                     <div class="texto">Colaboradores</div>
+                </div>
+            </a>
+            <a href="<?= $base; ?>/producao">
+                <div class="dash_sub_menu">
+                    <div class="icon"><i class="fas fa-pencil-ruler"></i></i></div>
+                    <div class="texto">Produção</div>
                 </div>
             </a>
             <!--<a href="<?= $base; ?>/financeiro">

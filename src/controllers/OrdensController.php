@@ -61,8 +61,9 @@ class OrdensController extends Controller {
     }
 
     public function cancelarOrdemAction($attr) {
+        $alterar = new OrdensModel();
         $ordem = $attr['id'];
-        echo $ordem;
+        $alterar->alterStatus($ordem);
     }
 
 }

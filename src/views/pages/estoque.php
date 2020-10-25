@@ -6,7 +6,7 @@
                 Adicionar produto</button></a>
     </div>
     <div class="busca-produto">
-        <form method="post">
+        <form method="get">
             <div><input type="text" name="busca" id="busca" class="form-control" placeholder="Buscar"></div>
             <div><button class="btn-form"><i class="fas fa-search"></i></button></div>
         </form>
@@ -41,13 +41,13 @@
                             <td>R$ <?= number_format($value['preco'], 2, ",", "."); ?></td>
                             <td>
                                 <div class="icons-table">
-                                    <a href="">
+                                    <a href="<?=$base;?>/estoque/detalhes/<?=$value['id'];?>" class="modal_ajax" info="Detalhes #<?=$value['nome'];?>">
                                         <div id="lupa"><i class="fas fa-search"></div></i>
                                     </a>
-                                    <a href="">
+                                    <a href="<?=$base;?>/estoque/editar/<?=$value['id'];?>">
                                         <div id="editar"><i class="fas fa-edit"></div></i>
                                     </a>
-                                    <a href="">
+                                    <a href="<?=$base;?>/estoque/excluir/<?=$value['id'];?>" class="modal_ajax" info="Excluir #<?=$value['nome'];?>">
                                         <div id="excluir"><i class="fas fa-times-circle"></div></i>
                                     </a>
                                 </div>

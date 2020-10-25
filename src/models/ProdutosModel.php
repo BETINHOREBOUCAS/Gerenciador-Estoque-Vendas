@@ -86,4 +86,25 @@ class ProdutosModel extends Model {
         $sql = $this->pdo->query("INSERT INTO produtos (nome, cor, tamanho, quantidade, preco, varanda, punho, acabamento, comprimento, largura, peso) VALUES ('$nome', '$cor','$tamanho', $quantidade, '$preco', '$varanda', '$punho', '$acabamento', '$comprimento', '$largura', '$peso')");
         return $sql->rowCount();
     }
+
+    public function updateProduto($id, $nome, $cor, $tamanho, $quantidade, $preco, $varanda, $punho, $acabamento, $comprimento, $largura, $peso) {
+        $sql = $this->pdo->prepare("UPDATE produtos SET nome = :nome, cor = :cor, tamanho = :tamanho, quantidade = :quantidade, preco = :preco, varanda = :varanda, punho = :punho, acabamento = :acabamento, comprimento = :comprimento, largura = :largura, peso = :peso WHERE id = $id");
+
+        $sql->bindValue(":nome", $nome);
+        $sql->bindValue(":cor", $cor);
+        $sql->bindValue(":tamanho", $tamanho);
+        $sql->bindValue(":quantidade", $quantidade);
+        $sql->bindValue(":preco", $preco);
+        $sql->bindValue(":varanda", $varanda);
+        $sql->bindValue(":punho", $punho);
+        $sql->bindValue(":acabamento", $acabamento);
+        $sql->bindValue(":comprimento", $comprimento);
+        $sql->bindValue(":largura", $largura);
+        $sql->bindValue(":peso", $peso);
+        $sql->execute();
+    }
+
+    public function deleteProduto($id) {
+        $this->pdo->query("UPDATE produtos SET situacao = 'Inativo' WHERE id = $id");
+    }
 }

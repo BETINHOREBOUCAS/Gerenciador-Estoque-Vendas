@@ -56,7 +56,13 @@ if (isset($_GET['ordenar'])) {
                         <td>R$ <?= number_format($value['desconto'], 2, ",", "."); ?></td>
                         <td>R$ <?= number_format($value['total'] - $value['desconto'], 2, ",", "."); ?></td>
                         <td><?= $value['forma_pagamento']; ?></td>
-                        <td><?= $value['status']; ?></td>
+                        <td>
+                            <?php if ($value['status'] == 'Aprovada'):?>
+                            <div style="color: green;" title="Aprovado"><i class="far fa-thumbs-up"></i></div>
+                            <?php else : ?>
+                            <div style="color: red;" title="Cancelado"><i class="far fa-thumbs-down"></i></div>
+                            <?php endif ?>
+                        </td>
                         <td>
                             <div class="icons-table">
                                 <a href="<?= $base; ?>/ordens/consulta/<?= $value['ordem']; ?>" class="modal_ajax" info="Detalhes #<?= $value['ordem']; ?>">

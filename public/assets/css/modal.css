@@ -11,14 +11,14 @@
 .modal {
 	left: 50%;
     top: 50%;
-    margin-left: -250px;
+    margin-left: -380px;
     /* Metade do valor da Largura */
-    margin-top: -250px;
+    margin-top: -280px;
     /* Metade da valor da Altura */
     position: absolute;
-    width: 650px;
+    width: 800px;
     /* Valor da Largura */
-    height: 400px;
+    height: 550px;
     /* Valor da Altura */
     background: white;
     border-radius: 5px;
@@ -28,7 +28,7 @@
 }
 
 .header {
-    width: 630px;
+    width: 785px;
     height: 60px;
     border-bottom: 1px solid #ccc;
     display: flex;
@@ -38,18 +38,18 @@
 
 .body {
     margin: 10px;
-    width: 580px;
+    width: 770px;
     margin-top: 80px;
 }
 
 .titulo {
-    width: 50%;
+    width: 90%;
     line-height: 30px;
     margin-left: 10px;
 }
 
 .fechar {
-    width: 50%;
+    width: 10%;
     line-height: 40px;
     text-align: right;
     font-size: 20pt;

@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="text">
-                    Business Integration
+                    Betinho Redes
                 </div>
 
             </div>
@@ -47,9 +47,9 @@
 
                     <input type="submit" value="ENTRAR" id="botao_entrar"> <br><br>
                 </form>
-                <div>
+                <!--<div>
                     <a href="<?= $base; ?>/cadastro"><button id="botao_cadastrar">CADASTRE-SE</button></a>
-                </div>
+                </div>-->
             </div>
 
         </div>

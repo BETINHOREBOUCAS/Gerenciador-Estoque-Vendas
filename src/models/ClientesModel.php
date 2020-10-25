@@ -66,4 +66,19 @@ class ClientesModel extends Model {
         $sql->execute();
 
     }    
+
+    public function updateClient($id, $nome, $endereco = [], $estado = [], $cidade = [], $tel1 = [], $tel2 = []) {
+        $sql = $this->pdo->prepare("UPDATE clientes SET nome = :nome, endereco = :endereco, estado = :estado, cidade = :cidade, telefone1 = :tel1, telefone2 = :tel2 WHERE id = $id");
+        $sql->bindValue(':nome', $nome);
+        $sql->bindValue(':endereco', $endereco);
+        $sql->bindValue(':estado', $estado);
+        $sql->bindValue(':cidade', $cidade);
+        $sql->bindValue(':tel1', $tel1);
+        $sql->bindValue('tel2', $tel2);
+        $sql->execute();
+    }
+
+    public function deleteClient($id) {
+        $this->pdo->query("UPDATE clientes SET situacao = 'Inativo' WHERE id = $id");
+    }
 }
