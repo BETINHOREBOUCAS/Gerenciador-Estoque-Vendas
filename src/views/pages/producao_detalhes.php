@@ -21,14 +21,14 @@
     <?php if (!empty($dados)) : ?>
     <table class="table table-striped table-hover borda" style="text-align: center;">
         <thead>
-            <tr>
-                <th style="width: 10%;">Qtd.</th>
-                <th style="width: 15%;">Entrega</th>
-                <th style="width: 15%;">Recolhido</th>
-                <th style="width: 10%;">Pagamento</th>
-                <th style="width: 20%;">Produto</th>
-                <th style="width: 10%;">Cor</th>
-                <th style="width: 10%;">Tamanho</th>
+            <tr style="vertical-align:middle">
+                <th style="vertical-align:middle">Qtd. Entrega</th>
+                <th style="vertical-align:middle">Entrega</th>
+                <th style="vertical-align:middle">Recolhido</th>
+                <th style="vertical-align:middle">Qtd. Recolh.</th>
+                <th style="vertical-align:middle">Qtd. Rest.</th>
+                <th style="vertical-align:middle">Pagamento</th>
+                <th style="vertical-align:middle">Produto</th>
             </tr>
         </thead>
 
@@ -43,33 +43,43 @@
             <tr style="vertical-align:middle">
                 <td><?= $value['producao']['qtd']; ?></td>
                 <td><?= $dataEntrega; ?></td>
+
                 <td>
                     <?php if (!empty($value['producao']['data_levada'])) : ?>
-                        <?php 
+                    <?php 
                                 $dataLevada = new DateTime($value['producao']['data_levada']);
                                 $dataLevada = $dataLevada->format('d/m/Y');
                         ?>
                     <?= $dataLevada; ?>
                     <?php else : ?>
-                    <input type="datetime-local" name="dataLevada" class="dataLevada"
-                        info2="<?= $value['producao']['id']; ?>">
+                    <input type="date" name="dataLevada" class="dataLevada" id="dataLevada<?= $value['producao']['id']; ?>" info2="<?= $value['producao']['id']; ?>">
                     <?php endif ?>
                 </td>
+
+                <td>
+                    <?php if($value['producao']['qtd'] - $value['producao']['qtd_recolhido'] == 0):?>
+
+                    <?php else :?>
+                    <input type="text" name="recolhido" id="recolhido<?= $value['producao']['id']; ?>" style="width: 50px;" class="dataLevada" info2="<?= $value['producao']['id']; ?>">
+                    <?php endif ?>
+                </td>
+
+                <td id="restante<?= $value['producao']['id']; ?>"><?= $value['producao']['qtd'] - $value['producao']['qtd_recolhido']; ?></td>
+                
                 <td>
                     <?php if ($value['producao']['pagamento'] == 'Pago') : ?>
                     <div style="color: green;" title="Pago" class="pag" info="<?= $value['producao']['pagamento']; ?>"
                         info2="<?= $value['producao']['id']; ?>" colaborador="<?= $id_colaborador; ?>">
-                        <i class="far fa-check-circle"></i></div>
+                        <i class="far fa-check-circle"></i>
+                    </div>
                     <?php else : ?>
                     <div style="color: orange;" title="Aguardando" class="pag"
                         info="<?= $value['producao']['pagamento']; ?>" info2="<?= $value['producao']['id']; ?>"
                         colaborador="<?= $id_colaborador; ?>"><i class="far fa-clock"></i></div>
                     <?php endif ?>
                 </td>
-                <td><?= $value['produto']['nome']; ?></td>
-                <td><?= $value['produto']['cor']; ?></td>
-                <td><?= $value['produto']['tamanho']; ?></td>
-
+                <td><?= $value['produto']['nome'].", ".$value['produto']['cor'].", ".$value['produto']['tamanho'];?></td>
+                
             </tr>
             <?php endforeach ?>
 

@@ -66,7 +66,34 @@ class ProducaoModel extends Model {
         $this->pdo->query("UPDATE producao SET pagamento = '$pagamento' WHERE id = $id");
     }
 
-    public function insertData($id, $dt) {
-        $this->pdo->query("UPDATE producao SET data_levada = '$dt' WHERE id = $id");
+    public function insertData($id, $dt, $qtdrecolhido) {
+        $qtdEntrega = $this->pdo->query("SELECT qtd FROM producao WHERE id = $id");
+        $qtdEntrega = $qtdEntrega->fetch(PDO::FETCH_ASSOC);
+
+        $producao = $this->pdo->query("SELECT sum(qtd_recolhido) FROM producao_recolhimento WHERE id_producao = $id");
+        $producao = $producao->fetchAll();
+        $producao = $producao[0][0];
+
+        if ($producao == null) {
+            $producao = 0;
+        }
+
+        $restante = $qtdEntrega['qtd'] - $producao;
+        $totalRecolhido = $producao + $qtdrecolhido;
+
+        $restante2 = ($qtdEntrega['qtd'] - $producao) - $qtdrecolhido;
+
+        if ($restante2 == 0) {
+            $this->pdo->query("UPDATE producao SET data_levada = '$dt' WHERE id = $id");
+        }
+
+        if ($producao < $qtdEntrega) {
+            if ($qtdrecolhido <= $restante) {
+              $this->pdo->query("INSERT INTO producao_recolhimento (data_recolhimento, qtd_recolhido, id_producao) VALUES ('$dt', $qtdrecolhido, $id)");
+
+              $this->pdo->query("UPDATE producao SET qtd_recolhido = $totalRecolhido WHERE id = $id");
+            }           
+        }
+        
     }
 }

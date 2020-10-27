@@ -1,4 +1,4 @@
-$('#form').bind('submit', function(e){
+$('#form').bind('submit', function (e) {
     e.preventDefault();
 
     var ordem = $('#ordem').val();
@@ -6,20 +6,20 @@ $('#form').bind('submit', function(e){
 
     $.ajax({
         type: 'GET',
-        url: '../../ordem/cancelar/action/'+ordem,
-        
-        success:function(html){
+        url: '../../ordem/cancelar/action/' + ordem,
+
+        success: function (html) {
             $('.modal_bg').hide();
             window.location.reload();
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#form_del').bind('submit', function(e){
+$('#form_del').bind('submit', function (e) {
     e.preventDefault();
 
     var id = $('#ordem').val();
@@ -27,20 +27,20 @@ $('#form_del').bind('submit', function(e){
 
     $.ajax({
         type: 'GET',
-        url: 'clientes/excluir/action/'+id,
-        
-        success:function(html){
+        url: 'clientes/excluir/action/' + id,
+
+        success: function (html) {
             $('.modal_bg').hide();
             window.location.reload();
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#form_estoque').bind('submit', function(e){
+$('#form_estoque').bind('submit', function (e) {
     e.preventDefault();
 
     var id = $('#produto').val();
@@ -48,20 +48,20 @@ $('#form_estoque').bind('submit', function(e){
 
     $.ajax({
         type: 'get',
-        url: 'estoque/excluir/action/'+id,
-        
-        success:function(html){
+        url: 'estoque/excluir/action/' + id,
+
+        success: function (html) {
             $('.modal_bg').hide();
             window.location.reload();
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#atividade').bind('submit', function(e){
+$('#atividade').bind('submit', function (e) {
     e.preventDefault();
 
     var atividade = $('#atividades').val();
@@ -69,23 +69,23 @@ $('#atividade').bind('submit', function(e){
 
     $.ajax({
         type: 'POST',
-        data: {atividade:atividade},
+        data: { atividade: atividade },
         url: 'producao/addatividade',
-        
-        success:function(html){
+
+        success: function (html) {
             $('.modal_bg').hide();
-            alert("Atividade "+ atividade + " adicionada com sucesso!");
+            alert("Atividade " + atividade + " adicionada com sucesso!");
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#producao').bind('submit', function(e){
+$('#producao').bind('submit', function (e) {
     e.preventDefault();
-    
+
     var colaborador = $('#colaborador').val();
     var produto = $('#produto').val();
     var qtd = $('#qtd').val();
@@ -94,42 +94,42 @@ $('#producao').bind('submit', function(e){
 
     $.ajax({
         type: 'POST',
-        data: {colaborador:colaborador, produto:produto, qtd:qtd, data:data, servico:servico},
+        data: { colaborador: colaborador, produto: produto, qtd: qtd, data: data, servico: servico },
         url: '../producao/addproducao',
-        
-        success:function(html){
+
+        success: function (html) {
             $('.modal_bg').hide();
             alert("Produto colocado em produção!");
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#pagamento').on('change', function(e){
+$('#pagamento').on('change', function (e) {
     e.preventDefault();
     var colaborador = $('#id_colaborador').val();
     var pagamento = $(this).val();
     var ordenar = $('#ordenar').val();
-    
+
     $.ajax({
         type: 'GET',
-        data: {colaborador:colaborador, pagamento:pagamento, ordenar:ordenar},
-        url: '../producao/detalhes/'+colaborador,
-        
-        success:function(html){
+        data: { colaborador: colaborador, pagamento: pagamento, ordenar: ordenar },
+        url: '../producao/detalhes/' + colaborador,
+
+        success: function (html) {
             $('.body').html(html);
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro")
         }
     })
-    
+
 });
 
-$('#ordenar').on('change', function(e){
+$('#ordenar').on('change', function (e) {
     e.preventDefault();
     var colaborador = $('#id_colaborador').val();
     var ordenar = $(this).val();
@@ -137,20 +137,20 @@ $('#ordenar').on('change', function(e){
 
     $.ajax({
         type: 'GET',
-        data: {colaborador:colaborador, pagamento:pagamento, ordenar:ordenar},
-        url: '../producao/detalhes/'+colaborador,
-        
-        success:function(html){
+        data: { colaborador: colaborador, pagamento: pagamento, ordenar: ordenar },
+        url: '../producao/detalhes/' + colaborador,
+
+        success: function (html) {
             $('.body').html(html);
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro");
         }
     });
-    
+
 });
 
-$('.pag').on('click', function(e){
+$('.pag').on('click', function (e) {
     e.preventDefault();
     var sitPag = $('#pagamento').val();
     var ordenar = $('#ordenar').val();
@@ -158,28 +158,75 @@ $('.pag').on('click', function(e){
 
     var sitAtual = $(this).attr('info');
     var idProducao = $(this).attr('info2');
-    console.log(idProducao);
+
     $.ajax({
         type: 'POST',
-        data: {sitAtual:sitAtual, idProducao:idProducao, sitPag:sitPag, ordenar:ordenar},
-        url: '../producao/detalhes/'+colaborador,
+        data: { sitAtual: sitAtual, idProducao: idProducao, sitPag: sitPag, ordenar: ordenar },
+        url: '../producao/detalhes/' + colaborador,
 
-        success:function(html){
+        success: function (html) {
             $('.body').html(html);
         },
-        erro:function(){
+        erro: function () {
             alert("Occoreu um erro");
         }
     });
 });
 
-$('.dataLevada').on('change', function(){
-    var dt = $(this).val();
-    var idProducao = $(this).attr('info2');
+var idProducao;
+var data;
+var qtdRecolhido;
+var qtdRestante;
 
-    $.ajax({
-        type: 'GET',
-        data: {dt:dt, idProducao:idProducao},
-        url: '../producao/addData'
-    });
+$('.dataLevada').on('change', function () {
+    var id = $(this).attr('id');
+    idProducao = $(this).attr('info2');
+
+    $('.dataLevada').attr('disabled', 'disabled');
+    $('#dataLevada' + idProducao).removeAttr('disabled');
+    $('#recolhido' + idProducao).removeAttr('disabled');
+
+    data = $('#dataLevada' + idProducao).val();
+    qtdRecolhido = parseInt($('#recolhido' + idProducao).val());
+    qtdRestante = parseInt($('#restante' + idProducao).text());
+
+    if (qtdRecolhido > qtdRestante || qtdRecolhido == 0) {
+        alert("Quantidade recolhida deve ser diferente de 0 e menor que a quantidade restante!");
+        if (data != "" && qtdRecolhido != "") {
+            $('.dataLevada').removeAttr('disabled');
+        }
+    } else {
+        if (data != "" && isNaN(qtdRecolhido) != true) {
+            $.ajax({
+                type: 'GET',
+                data: { data: data, idProducao: idProducao, qtdRecolhido: qtdRecolhido },
+                url: '../producao/addData',
+                success: function (html) {
+
+                    var colaborador = $('#id_colaborador').val();
+                    var ordenar = $('#ordenar').val();
+                    var pagamento = $('#pagamento').val();
+
+                    $.ajax({
+                        type: 'GET',
+                        data: { colaborador: colaborador, pagamento: pagamento, ordenar: ordenar },
+                        url: '../producao/detalhes/' + colaborador,
+                
+                        success: function (html) {
+                            $('.body').html(html);
+                        },
+                        erro: function () {
+                            alert("Occoreu um erro");
+                        }
+                    });
+
+                },
+                erro: function () {
+                    alert("Occoreu um erro");
+                }
+
+            });
+        }
+    }
+
 });

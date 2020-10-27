@@ -112,10 +112,11 @@ class ProducaoController extends Controller {
 
     public function addData() {
         $idProducao = filter_input(INPUT_GET, 'idProducao');
-        $dt = filter_input(INPUT_GET, 'dt');
-
+        $dt = filter_input(INPUT_GET, 'data');
+        $qtdRecolhido = filter_input(INPUT_GET, 'qtdRecolhido');
         $inserir = new ProducaoModel();
-        $inserir->insertData($idProducao, $dt);
+        $inserir->insertData($idProducao, $dt, $qtdRecolhido);
+        echo $dt;
     }
 
 }
