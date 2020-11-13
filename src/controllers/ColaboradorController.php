@@ -20,7 +20,12 @@ class ColaboradorController extends Controller {
     }
 
     public function index() {
-        $this->render('colaborador', ['usuario' => $this->loggedUser['nome']]);
+        $flash = '';
+        if (!empty($_SESSION['flash'])) {
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+        $this->render('colaborador', ['flash' => $flash, 'usuario' => $this->loggedUser['nome']]);
     }
 
     public function indexAction () {
@@ -48,7 +53,7 @@ class ColaboradorController extends Controller {
         $nome = ucwords(strtolower(filter_input(INPUT_POST, 'nome')));
         $endereco = ucwords(strtolower(filter_input(INPUT_POST, 'endereco')));
         $funcao = ucwords(strtolower(filter_input(INPUT_POST, 'funcao')));
-        $preco = ucwords(strtolower(filter_input(INPUT_POST, 'preco')));
+        $preco = str_replace(",", ".", ucwords(strtolower(filter_input(INPUT_POST, 'preco'))));
         $tel1 = ucwords(strtolower(filter_input(INPUT_POST, 'tel1')));
         $tel2 = ucwords(strtolower(filter_input(INPUT_POST, 'tel2')));
 
@@ -57,7 +62,7 @@ class ColaboradorController extends Controller {
 
         $_SESSION['flash'] = "Colaborador cadastrado com sucesso!";
 
-        $this->redirect('/colaborador/addcolaborador');
+        $this->redirect('/colaborador');
     }
 
     public function editarColaborador($attr) {
@@ -79,10 +84,10 @@ class ColaboradorController extends Controller {
     }
 
     public function editarColaboradorAction($attr) {
-       echo $nome = ucwords(strtolower(filter_input(INPUT_POST, 'nome')));
+        $nome = ucwords(strtolower(filter_input(INPUT_POST, 'nome')));
         $endereco = ucwords(strtolower(filter_input(INPUT_POST, 'endereco')));
         $funcao = ucwords(strtolower(filter_input(INPUT_POST, 'funcao')));
-        $preco = ucwords(strtolower(filter_input(INPUT_POST, 'preco')));
+        $preco = str_replace(",", ".", ucwords(strtolower(filter_input(INPUT_POST, 'preco'))));
         $tel1 = ucwords(strtolower(filter_input(INPUT_POST, 'tel1')));
         $tel2 = ucwords(strtolower(filter_input(INPUT_POST, 'tel2')));
         $status = ucwords(strtolower(filter_input(INPUT_POST, 'status')));

@@ -27,7 +27,7 @@
             <table class="table table-striped table-hover borda">
                 <thead>
                     <tr>
-                        <th style="width: 15%;">Cod.</th>
+                        <th style="width: 15%;" class="mobile">Cod.</th>
                         <th style="width: 20%;">Produto</th>
                         <th style="width: 10%;">Cor</th>
                         <th style="width: 10%;">Estoque</th>
@@ -39,7 +39,7 @@
                 <?php foreach ($produtos as $value) : ?>
                     <tbody>
                         <tr style="vertical-align:middle">
-                            <td><?= $value['id']; ?></td>
+                            <td class="mobile"><?= $value['id']; ?></td>
                             <td><?= $value['nome']; ?></td>
                             <td><?= $value['cor']; ?></td>
                             <td><?= $value['quantidade']; ?></td>

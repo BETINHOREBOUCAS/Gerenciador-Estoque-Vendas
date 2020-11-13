@@ -29,17 +29,6 @@ class ProducaoController extends Controller {
             ]);
     }
 
-    public function addAtividade() {
-        $this->render('producao_atividade');
-    }
-
-    public function addAtividadeAction() {
-        $atividade = ucwords(strtolower(filter_input(INPUT_POST, 'atividade')));
-        
-        $atividades = new ProducaoModel();
-        $atividades->insertAtividade($atividade);
-    }
-
     public function addProducao($attr) {
         $idColaborador = $attr['id'];
         $atividade_obj = new ProducaoModel();
@@ -81,6 +70,13 @@ class ProducaoController extends Controller {
             'ordenar' => $ordenar,
             'dados' => $dados
             ]);
+    }
+
+    public function detalhesInfor() {
+        $idProducao = filter_input(INPUT_GET, 'idProducao');
+        $producao_object = new ProducaoModel();
+        $dados = $producao_object->getDetalhesProducao($idProducao);
+        $this->render('producao_detalhes_infor', ['dados' => $dados]);
     }
 
     public function detalhesAction($attr) {

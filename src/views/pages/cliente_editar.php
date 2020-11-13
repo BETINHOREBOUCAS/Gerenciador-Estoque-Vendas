@@ -3,6 +3,7 @@
 <div class="title">Editar #</div>
 
 <form method="post">
+<div class="pai">
 
     <div class="caixa">
         <div>
@@ -38,7 +39,8 @@
     </div>
 
     <div class="caixa"><input type="submit" value="Salvar" class="btn btn-success"></div>
-
+    
+</div>
 </form>
 </div>
 

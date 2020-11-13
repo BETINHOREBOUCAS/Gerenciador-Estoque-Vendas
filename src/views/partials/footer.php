@@ -9,13 +9,16 @@
             </div>
         </div>
         <div class="body">
-            Carregando...
+        <div id="load"><i class="fas fa-cog fa-spin"></i></div>
+            
         </div>
     </div>
 </div>
 
 <script src="<?= $base; ?>/assets/js/jquery.min.js"></script>
 <script src="<?= $base; ?>/assets/js/modal.js"></script>
+<script src="<?=$base;?>/assets/js/jquery.mask.js"></script>
+<script src="<?=$base;?>/assets/js/script.mask.js"></script>
 </body>
 
 </html>

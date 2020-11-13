@@ -37,13 +37,13 @@ class EstoqueController extends Controller {
         $cor = ucwords(strtolower(filter_input(INPUT_POST, 'cor')), "/");
         $tamanho = filter_input(INPUT_POST, 'tamanho');
         $quantidade = filter_input(INPUT_POST, 'quantidade');
-        $preco = filter_input(INPUT_POST, 'preco');
+        $preco = str_replace(",", ".", filter_input(INPUT_POST, 'preco'));
         $varanda = filter_input(INPUT_POST, 'varanda');
         $punho = filter_input(INPUT_POST, 'punho');
         $acabamento = filter_input(INPUT_POST, 'acabamento');
-        $comprimento = filter_input(INPUT_POST, 'comprimento');
-        $largura = filter_input(INPUT_POST, 'largura');
-        $peso = filter_input(INPUT_POST, 'peso');
+        $comprimento = str_replace(",", ".", filter_input(INPUT_POST, 'comprimento'));
+        $largura = str_replace(",", ".", filter_input(INPUT_POST, 'largura'));
+        $peso = str_replace(",", ".", filter_input(INPUT_POST, 'peso'));
 
         if (!empty($nome) && !empty($cor)) {
             $inserir = new ProdutosModel();

@@ -83,7 +83,7 @@ class ProdutosModel extends Model {
 
     //Seção Estoque
     public function addProduto ($nome, $cor, $tamanho, $quantidade, $preco, $varanda, $punho, $acabamento, $comprimento, $largura, $peso) {
-        $sql = $this->pdo->query("INSERT INTO produtos (nome, cor, tamanho, quantidade, preco, varanda, punho, acabamento, comprimento, largura, peso) VALUES ('$nome', '$cor','$tamanho', $quantidade, '$preco', '$varanda', '$punho', '$acabamento', '$comprimento', '$largura', '$peso')");
+        $sql = $this->pdo->query("INSERT INTO produtos (nome, cor, tamanho, quantidade, preco, varanda, punho, acabamento, comprimento, largura, peso) VALUES ('$nome', '$cor','$tamanho', $quantidade, $preco, '$varanda', '$punho', '$acabamento', '$comprimento', '$largura', '$peso')");
         return $sql->rowCount();
     }
 

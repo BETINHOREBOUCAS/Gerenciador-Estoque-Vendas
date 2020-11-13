@@ -1,3 +1,9 @@
+var idProducao;
+var data;
+var qtdRecolhido;
+var qtdRestante;
+var colaborador;
+
 $('#form').bind('submit', function (e) {
     e.preventDefault();
 
@@ -64,23 +70,63 @@ $('#form_estoque').bind('submit', function (e) {
 $('#atividade').bind('submit', function (e) {
     e.preventDefault();
 
-    var atividade = $('#atividades').val();
-    console.log(atividade);
+    let atividade = $('#atividades').val();
+    let config = $(this).attr('config');
 
-    $.ajax({
-        type: 'POST',
-        data: { atividade: atividade },
-        url: 'producao/addatividade',
-
-        success: function (html) {
-            $('.modal_bg').hide();
-            alert("Atividade " + atividade + " adicionada com sucesso!");
-        },
-        erro: function () {
-            alert("Occoreu um erro")
-        }
-    })
-
+    switch (config) {
+        case "adicionar":
+            let atividade = $('#atividades').val();
+    
+            $.ajax({
+                type: 'POST',
+                data: {atividade: atividade},
+                url: 'atividades/addAtividade',
+        
+                success: function (html) {
+                    $('.modal_bg').hide();
+                    alert("Atividade " + atividade + " adicionada com sucesso!");
+                },
+                erro: function () {
+                    alert("Occoreu um erro")
+                }
+            });
+            break;
+        case "editar":
+            let idAtividade = $('#atividades').val();
+            let novaAtividade = $('#novaAtividade').val();
+            
+            $.ajax({
+                type: 'POST',
+                data: {idAtividade: idAtividade, novaAtividade:novaAtividade},
+                url: 'atividades/editarAtividade',
+        
+                success: function (html) {
+                    $('.modal_bg').hide();
+                    alert("Atividade alterada com sucesso!");
+                },
+                erro: function () {
+                    alert("Occoreu um erro")
+                }
+            });
+            break;
+        case "excluir":
+            let ativ = $('#atividades').val();
+            
+            $.ajax({
+                type: 'POST',
+                data: {idAtividade: ativ},
+                url: 'atividades/excluirAtividade',
+        
+                success: function (html) {
+                    $('.modal_bg').hide();
+                    alert("Atividade excluida com sucesso!");
+                },
+                erro: function () {
+                    alert("Occoreu um erro")
+                }
+            });
+            break;
+    }
 });
 
 $('#producao').bind('submit', function (e) {
@@ -173,11 +219,6 @@ $('.pag').on('click', function (e) {
     });
 });
 
-var idProducao;
-var data;
-var qtdRecolhido;
-var qtdRestante;
-
 $('.dataLevada').on('change', function () {
     var id = $(this).attr('id');
     idProducao = $(this).attr('info2');
@@ -211,7 +252,7 @@ $('.dataLevada').on('change', function () {
                         type: 'GET',
                         data: { colaborador: colaborador, pagamento: pagamento, ordenar: ordenar },
                         url: '../producao/detalhes/' + colaborador,
-                
+
                         success: function (html) {
                             $('.body').html(html);
                         },
@@ -229,4 +270,41 @@ $('.dataLevada').on('change', function () {
         }
     }
 
+});
+
+$('.infor').on('click', function (e) {
+    e.preventDefault();
+    let id = $(this).attr('info2');
+    let idColaborador = $(this).attr('idColaborador');
+
+    if (id == undefined) {
+        $.ajax({
+            type: 'GET',
+            url: '../producao/detalhes/' + colaborador,
+
+            success: function (html) {
+                $('.body').html(html);
+            },
+            erro: function () {
+                alert("Occoreu um erro");
+            }
+        });
+
+    } else {
+        idProducao = id;
+        colaborador = idColaborador;
+
+        $.ajax({
+            type: 'GET',
+            data: { idProducao: idProducao },
+            url: '../producao/detalhes/infor',
+
+            success: function (html) {
+                $('.body').html(html);
+            },
+            erro: function () {
+                alert("Occoreu um erro");
+            }
+        });
+    }
 });

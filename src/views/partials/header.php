@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?= $base; ?>/assets/css/outros.css">
     <link rel="stylesheet" href="<?= $base; ?>/assets/css/modal.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Redes Rebouças</title>
 </head>
 
 <body>
@@ -62,8 +62,14 @@
             </a>
             <a href="<?= $base; ?>/producao">
                 <div class="dash_sub_menu">
-                    <div class="icon"><i class="fas fa-pencil-ruler"></i></i></div>
+                    <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
                     <div class="texto">Produção</div>
+                </div>
+            </a>
+            <a href="<?= $base; ?>/atividades">
+                <div class="dash_sub_menu">
+                    <div class="icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="texto">Atividades</div>
                 </div>
             </a>
             <!--<a href="<?= $base; ?>/financeiro">

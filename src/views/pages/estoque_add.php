@@ -11,11 +11,11 @@
     <div class="caixa">
             <div>
                 <label for="nome">Nome:</label> <br>
-                <input type="text" name="nome" id="nome" class="form-control"> 
+                <input type="text" name="nome" id="nome" class="form-control" required> 
             </div>
             <div>
                 <label for="cor">Cor:</label><br>
-                <input type="text" name="cor" id="cor" class="form-control"> 
+                <input type="text" name="cor" id="cor" class="form-control" required> 
             </div>
         </div>
 
@@ -35,14 +35,14 @@
             </div>
             <div>
                 <label for="quantidade">Quantidade:</label><br>
-                <input type="text" name="quantidade" id="quantidade" class="form-control"> 
+                <input type="number" name="quantidade" id="quantidade" class="form-control" required min="0"> 
             </div>
         </div>
 
         <div class="caixa">
             <div>
                 <label for="preco">Preço:</label> <br>
-                <input type="text" name="preco" id="preco" class="form-control"> 
+                <input type="text" name="preco" id="preco" class="form-control" required> 
             </div>
             <div>
                 <label for="varanda">Varanda:</label><br>

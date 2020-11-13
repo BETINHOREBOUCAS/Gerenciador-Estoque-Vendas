@@ -23,6 +23,9 @@
 </div>
 
 <div class="tabela-produto">
+<?php if (!empty($flash)) : ?>
+        <div class="msg msgSuccess"><?= $flash; ?></div> <br>
+    <?php endif ?>
     <div class="table">
         <?php if (!empty($colaboradores)) : ?>
         <table class="table table-striped table-hover borda">

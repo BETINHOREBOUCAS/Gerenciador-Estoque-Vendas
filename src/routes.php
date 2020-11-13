@@ -9,6 +9,14 @@ $router->get('/sair', 'HomeController@sair');
 $router->get('/login', 'LoginController@login');
 $router->post('/login', 'LoginController@loginAction');
 
+$router->get('/atividades', 'AtividadesController@index');
+$router->get('/atividades/addAtividade', 'AtividadesController@addAtividade');
+$router->post('/atividades/addAtividade', 'AtividadesController@addAtividadeAction');
+$router->get('/atividades/editarAtividade', 'AtividadesController@editarAtividade');
+$router->post('/atividades/editarAtividade', 'AtividadesController@editarAtividadeAction');
+$router->get('/atividades/excluirAtividade', 'AtividadesController@excluirAtividade');
+$router->post('/atividades/excluirAtividade', 'AtividadesController@excluirAtividadeAction');
+
 $router->get('/estoque/addProduto', 'EstoqueController@addProduto');
 $router->post('/estoque/addProduto', 'EstoqueController@addProdutoAction');
 $router->get('/estoque/detalhes/{id}', 'EstoqueController@detalhesProduto');
@@ -29,8 +37,7 @@ $router->get('/clientes', 'ClientesController@buscarCliente');
 $router->get('/addCliente', 'ClientesController@addCliente');
 $router->post('/addCliente', 'ClientesController@addClienteAction');
 
-$router->get('/producao/addatividade', 'ProducaoController@addAtividade');
-$router->post('/producao/addatividade', 'ProducaoController@addAtividadeAction');
+$router->get('/producao/detalhes/infor', 'ProducaoController@detalhesInfor');
 $router->get('/producao/addproducao/{id}', 'ProducaoController@addProducao');
 $router->post('/producao/addproducao', 'ProducaoController@addProducaoAction');
 $router->get('/producao/detalhes/{id}', 'ProducaoController@detalhes');

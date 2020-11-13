@@ -2,8 +2,10 @@
 
 <div class="produto">
     <div class="botao-produto">
-        <a href="<?= $base; ?>/producao/addatividade" class="modal_ajax" info="Adicionar Atividade"><button class="btn btn-success" style="background-color: orangered;"><i class="fas fa-cogs"></i> Adicionar
-                atividade</button></a>
+        <a href="<?= $base; ?>/producao/addatividade" class="modal_ajax" info="Adicionar Atividade"><button class="btn btn-success"><i class="fas fa-cogs"></i> Adicionar atividade</button></a>
+    </div>
+    <div class="botao-produto">
+        <a href="<?= $base; ?>/producao/addatividade" class="modal_ajax" info="Editar Atividade"><button class="btn btn-success" style="background-color: orangered;"><i class="fas fa-cogs"></i> Editar atividade</button></a>
     </div>
 </div>
 
@@ -27,24 +29,24 @@
                     <?php foreach ($dados as $value) : ?>
                         <?php
                         if (!empty($value['producao']['data_levada'])) {
-                           $dataRecolhida = new DateTime($value['producao']['data_levada']);
-                        $dataRecolhida = $dataRecolhida->format('d/m/Y'); 
-                        }else {
+                            $dataRecolhida = new DateTime($value['producao']['data_levada']);
+                            $dataRecolhida = $dataRecolhida->format('d/m/Y');
+                        } else {
                             $dataRecolhida = "";
                         }
-                        
-                        
+
+
                         $dataLevada = new DateTime($value['producao']['data_entrega']);
                         $dataLevada = $dataLevada->format('d/m/Y');
 
                         ?>
                         <tr style="vertical-align:middle">
                             <td><?= $value['producao']['setor']; ?></td>
-                            <td><?= $value['produto']['nome'];?></td>
+                            <td><?= $value['produto']['nome']; ?></td>
                             <td><?= $value['producao']['qtd']; ?></td>
                             <td><?= $value['colaborador']['nome']; ?></td>
-                            <td><?=$dataLevada;?></td>
-                            <td><?=$dataRecolhida;?></td>
+                            <td><?= $dataLevada; ?></td>
+                            <td><?= $dataRecolhida; ?></td>
                             <td>
                                 <?php if ($value['producao']['pagamento'] == 'Pago') : ?>
                                     <div style="color: green;" title="Pago" class="pag" info="<?= $value['producao']['pagamento']; ?>" info2="<?= $value['producao']['id']; ?>" colaborador="<?= $id_colaborador; ?>">

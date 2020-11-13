@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="text">
-                    Betinho Redes
+                    Redes Rebouças
                 </div>
 
             </div>

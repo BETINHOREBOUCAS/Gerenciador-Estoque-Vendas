@@ -75,3 +75,18 @@ a {
 .dash_sub_menu .icon {
     padding-right: 20px;
 }
+
+@media only screen and (max-width:800px) {
+    .dash {
+        width: 90px;
+        position: fixed;
+    }
+
+    .logo, hr, .texto {
+        display: none;
+    }
+
+    .barra_menu {
+        margin-right: 10px;
+    }
+}

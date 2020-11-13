@@ -24,22 +24,22 @@
             <table class="table table-striped table-hover borda">
                 <thead>
                     <tr>
-                        <th style="width: 10%;">ID</th>
+                        <th style="width: 10%;" class="mobile">ID</th>
                         <th style="width: 45%;">Nome</th>
-                        <th style="width: 10%;">Tel1</th>
-                        <th style="width: 10%;">Tel2</th>
-                        <th style="width: 10%;">Situação</th>
+                        <th style="width: 10%;" class="mobile">Tel1</th>
+                        <th style="width: 10%;" class="mobile">Tel2</th>
+                        <th style="width: 10%;" class="mobile">Situação</th>
                         <th style="width: 10%;">Ações</th>
                     </tr>
                 </thead>
                 <?php foreach ($data as $value) : ?>
                     <tbody>
                         <tr style="vertical-align:middle">
-                            <td><?= $value['id']; ?></td>
+                            <td class="mobile"><?= $value['id']; ?></td>
                             <td style="text-align: left; padding-left: 30px;"><?= $value['nome']; ?></td>
-                            <td><?= $value['telefone1']; ?></td>
-                            <td><?= $value['telefone2']; ?></td>
-                            <td>
+                            <td class="mobile"><?= $value['telefone1']; ?></td>
+                            <td class="mobile"><?= $value['telefone2']; ?></td>
+                            <td class="mobile">
                                 <?php if($value['situacao'] == 'Ativo') :?>
                                 <div style="color: green;" title="Ativo"><i class="far fa-check-circle"></i></div>
                                 <?php else :?>

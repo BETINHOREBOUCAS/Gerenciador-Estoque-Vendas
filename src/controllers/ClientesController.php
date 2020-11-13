@@ -54,10 +54,10 @@ class ClientesController extends Controller {
         if (!empty($nome)) {
             $add = new ClientesModel();
             $add->insertClient($nome, $endereco, $estado, $cidade, $tel1, $tel2); 
-            $_SESSION = ['flash' => "Sucesso! Cliente $nome foi adicionado com sucesso!"];
+            $_SESSION['flash'] = "Sucesso! Cliente $nome foi adicionado com sucesso!";
             $this->redirect('/clientes');
         } else {
-            $_SESSION = ['flash' => 'Erro! O campo nome é obrigatorio!'];
+            $_SESSION['flash'] = 'Erro! O campo nome é obrigatorio!';
             $this->redirect('/addCliente');
         }      
 

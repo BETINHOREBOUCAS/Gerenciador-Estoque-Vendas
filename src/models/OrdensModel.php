@@ -9,6 +9,7 @@ class OrdensModel extends Model {
     public function getOrdem($value) {
         if (!empty($value)) {
             if (is_numeric($value)) {
+                $dados = [];
                 $sql = $this->pdo->prepare("SELECT * FROM ordens WHERE ordem = :busca");
                 $sql->bindValue(":busca", $value);
                 $sql->execute();
@@ -25,6 +26,7 @@ class OrdensModel extends Model {
                 } 
                 return $dados;
             }else {
+                $dados = [];
                 $sql = $this->pdo->prepare("SELECT * FROM clientes WHERE nome like :busca");
                 $sql->bindValue(":busca", "%$value%");
                 $sql->execute();
@@ -50,7 +52,7 @@ class OrdensModel extends Model {
             }
             
         } else {
-
+            $dados = [];
             $sql = $this->pdo->query("SELECT * FROM ordens ORDER BY data_ordem desc");
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
             

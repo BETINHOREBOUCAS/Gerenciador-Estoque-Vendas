@@ -13,6 +13,7 @@ class ProducaoModel extends Model {
     }
 
     public function getProducaoColaboradores() {
+        $dados = [];
         $sql = $this->pdo->query("SELECT * FROM producao ORDER BY data_levada desc");
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -35,21 +36,21 @@ class ProducaoModel extends Model {
         $sql->bindValue(":pagamento", $pagamento);
         $sql->execute();
         $infor = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $valorProducao = $this->pdo->query("SELECT * FROM colaboradores WHERE id = $id");
+        $valorProducao = $valorProducao->fetch(PDO::FETCH_ASSOC);
+        
         foreach ($infor as $value) {
             $idProduto = $value['id_produto'];
             $sql = $this->pdo->query("SELECT nome, cor, tamanho FROM produtos WHERE id = $idProduto");
             $produto = $sql->fetch(PDO::FETCH_ASSOC);
 
-            $dados[] = ['produto' => $produto, 'producao' => $value];
+            $dados[] = ['produto' => $produto, 'producao' => $value, 'colaborador' => $valorProducao];
             
         }
         
         return $dados;
 
-    }
-
-    public function insertAtividade($atividade) {
-        $this->pdo->query("INSERT INTO atividades (atividade) VALUES ('$atividade')");
     } 
 
     public function insertProducao($colaborador, $produto, $qtd, $servico, $data) {
@@ -95,5 +96,11 @@ class ProducaoModel extends Model {
             }           
         }
         
+    }
+
+    public function getDetalhesProducao($idProducao) {
+        $sql = $this->pdo->query("SELECT * FROM producao_recolhimento WHERE id_producao = $idProducao ORDER BY data_recolhimento asc");
+        $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $dados;
     }
 }

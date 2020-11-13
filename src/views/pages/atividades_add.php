@@ -1,4 +1,4 @@
-<form method="get" id="atividade">
+<form method="get" id="atividade" config="adicionar">
     <label for="atividade">Atividade:</label><br>
     <input type="text" name="atividades" id="atividades" class="form-control">
 

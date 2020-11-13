@@ -5,7 +5,6 @@
 }
 
 .botao-produto {
-    width: 100%;
     margin-left: 20px;
 }
 
@@ -165,4 +164,41 @@
     height: 25px;
     line-height: 25px;
     border-radius: 18%;    
+}
+
+@media only screen and (max-width:800px) {
+    .produto {
+        display: block;
+    }
+
+    .botao-produto {
+        margin-bottom: 10px;
+    }
+
+    .busca-produto {
+        float: right;
+        width: 40%;
+    }
+
+    .form-control {
+        width: 180px;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .icons-table {
+        display: block;
+    }
+
+    .table {
+        width: 95% !important;
+        margin-left: 10px;
+    }
+
+    .caixa {
+        display: block !important;
+        text-align: center;
+    }
 }
